@@ -1,0 +1,14 @@
+1. Create a new folder named nytServer and initialize a Node application:
+$ mkdir nytServer && cd $_
+$ npm init -y
+
+2. Create a script file named app.js, install nodemon, express and morgan.
+$ touch app.js
+$ npm install nodemon -D
+$ npm install morgan express
+
+3. Then modify package.json to add scripts for the project.
+"scripts": {
+    "start": "nodemon app"
+},
+

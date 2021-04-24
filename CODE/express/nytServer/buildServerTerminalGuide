@@ -1,0 +1,82 @@
+//1. Create a new folder named nytServer and initialize a Node application:
+
+$ mkdir nytServer && cd $_
+$ npm init -y
+
+//2. Create a script file named app.js, install nodemon, express and morgan.
+
+$ touch app.js
+$ npm install nodemon -D
+$ npm install morgan express
+
+//3. Then modify package.json to add scripts for the project.
+
+"scripts": {
+    "start": "nodemon app"
+},
+
+//4. Copy the book.js file into your project directory and name 
+it books-data.js. This file contains an array of books which 
+we will use for this project. If you look at the books-data.js 
+file you will see that it simply exports an array of objects:
+
+module.exports = [
+  {
+    bestsellers_date: 1211587200000,
+    published_date: 1212883200000,
+    author: "Dean R Koontz",
+    description:
+      "Odd Thomas, who can communicate with the dead, confronts evil forces in a California coastal town.",
+    price: 27,
+    publisher: "Bantam",
+    title: "ODD HOURS",
+    rank: 1,
+    rank_last_week: 0,
+    weeks_on_list: 1,
+    id: "5b4aa4ead3089013507db18b"
+  },
+  ...
+];
+
+//5. Create the basic server in app.js with Express and add morgan.
+
+const express = require('express');
+const morgan = require('morgan');
+
+const app = express();
+
+app.use(morgan('common')); // let's see what 'common' format looks like
+
+app.get('/books', (req, res) => {
+  // ALL OUR CODE HERE
+});
+
+app.listen(8000, () => {
+  console.log('Server started on PORT 8000');
+});
+
+//6. Run the server and we are all set to start implementing the solution.
+
+$ npm start 
+
+//7.  require the array of books:
+
+app.use(morgan('common'));
+
++ const books = require('./books-data.js');
+
+app.get('/books', (req, res) => {
+
+    //8.  just return the entire list of books.
+
+  app.get('/books', (req, res) => {
+- // ALL OUR CODE HERE
++ res
++   .json(books);
+  });
+
+  //9.  get the search parameter and default it, if it is not provided like this:
+
+  const { search = ""} = req.query;
+
+  //10.    

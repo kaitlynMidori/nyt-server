@@ -1,0 +1,4 @@
+For this client application, we will only create 2 components, 
+the App component will contain a form to capture user input and the 
+Book component will display the details of a book.
+
